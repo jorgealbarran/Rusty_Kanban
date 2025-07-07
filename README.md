@@ -1,4 +1,4 @@
-'''# Rusty Kanban
+# Rusty Kanban
 
 A simple command-line Kanban board application written in Rust.
 

@@ -8,29 +8,29 @@ pub enum Action {
     // Action to add a new task
     #[structopt(about = "Add a new task to the to-do list")]
     Add {
-        #[structopt(help = "Task description")]
-        task: String, // The description of the task to be added
+        #[structopt(help = "The description of the task to add")]
+        task: String,
     },
     // Action to mark a task as "doing"
-    #[structopt(about = "Mark task(s) as doing")]
+    #[structopt(about = "Mark one or more tasks as 'doing'")]
     Doing {
-        #[structopt(help = "Position of the task(s) to mark as doing")]
-        position: Vec<usize>, // A vector of task positions to be marked as doing
+        #[structopt(help = "The position(s) of the task(s) to mark as doing")]
+        position: Vec<usize>,
     },
     // Action to mark a task as "done"
-    #[structopt(about = "Mark task(s) as done")]
+    #[structopt(about = "Mark one or more tasks as 'done'")]
     Done {
-        #[structopt(help = "Position of the task(s) to mark as done")]
-        position: Vec<usize>, // A vector of task positions to be marked as done
+        #[structopt(help = "The position(s) of the task(s) to mark as done")]
+        position: Vec<usize>,
     },
     // Action to delete a task
-    #[structopt(about = "Delete task(s) from the to-do list")]
+    #[structopt(about = "Delete one or more tasks from the to-do list")]
     Delete {
-        #[structopt(help = "Position of the task(s) to delete")]
-        position: Vec<usize>, // A vector of task positions to be deleted
+        #[structopt(help = "The position(s) of the task(s) to delete")]
+        position: Vec<usize>,
     },
     // Action to list all tasks
-    #[structopt(about = "List all tasks")]
+    #[structopt(about = "List all tasks in the Kanban board")]
     List,
 }
 
@@ -38,8 +38,8 @@ pub enum Action {
 #[derive(Debug, StructOpt)]
 #[structopt(
     name = "Rusty Kanban",
-    about = "A command line Kanban app written in Rust",
-    author = "akash2061 modified by Jorge Albarran"
+    about = "A simple command-line Kanban board application written in Rust.",
+    author = "Jorge Albarran"
 )]
 pub struct CommandLineArgs {
     // The specific action to be performed
@@ -50,8 +50,8 @@ pub struct CommandLineArgs {
     #[structopt(
         parse(from_os_str),
         short = "f",
-        long = "journal-file",
-        help = "Path to the journal file"
+        long = "file",
+        help = "Path to the journal file. Defaults to ~/.config/Rust-Kanban/rust-kanban.json"
     )]
     pub journal_file: Option<PathBuf>,
 }
